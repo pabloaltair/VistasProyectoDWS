@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motor Riding Club</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <img alt="Yamaha Logo" height="150" src="resources/logo moto.jpg" width="100">
+        <ul>
+            <!-- Casilla que solo será visible para los administradores -->
+            
+            <li><a id="adminBox" style="display: block;" href="menuadministrador.html">Administrador</a></li>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Eventos</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Rutas</a></li>
+            <li><a href="#">Sedes</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <!-- Si no está logueado, mostrar los botones de login y registro -->
+            <div class="dropdown">
+                <button onclick="toggleDropdown('loginDropdown')" class="dropdown-btn">Inicio de sesión</button>
+                <div id="loginDropdown" class="dropdown-content">
+                    <a href="iniciarsesionclub.html">Club</a>
+                    <a href="iniciarsesionusuario.html">Usuario</a>
+                </div>
+            </div>
+
+            <!-- Si no está logueado, mostrar el botón de registrarse -->
+            <div class="dropdown">
+                <button onclick="toggleDropdown('registerDropdown')" class="dropdown-btn">Registrarme</button>
+                <div id="registerDropdown" class="dropdown-content">
+                    <a href="registrarseclub.html">Club</a>
+                    <a href="registrarseusuario.html">Usuario</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <img alt="Motorcycle Riders on Track" height="1080" src="resources/rodada.jpg" width="1920"/>
+        <div class="logo">
+            <div class="welcome">¡Mas de 10 000 km recorridos juntos!</div>
+        </div>
+    </div>
+
+    <!-- Script para controlar la visibilidad de los menús desplegables -->
+    <script>
+        // Función para alternar el estado de visibilidad del menú desplegable
+        function toggleDropdown(id) {
+            // Oculta cualquier menú desplegable que esté abierto
+            const dropdowns = document.querySelectorAll('.dropdown-content');
+            dropdowns.forEach(dropdown => {
+                if (dropdown.id !== id) {
+                    dropdown.style.display = 'none';
+                }
+            });
+            // Alterna la visibilidad del menú seleccionado
+            const dropdown = document.getElementById(id);
+            dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Cierra los menús desplegables si se hace clic fuera de ellos
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown-btn')) {
+                const dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(dropdown => dropdown.style.display = 'none');
+            }
+        };
+
+    </script>
+</body>
+</html>
